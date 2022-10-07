@@ -36,3 +36,41 @@
     transform: rotate(360deg);
   }
 }
+
+body {
+    display:flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.calcContainer {
+  display: flex;
+  flex-wrap: wrap;
+
+}
+
+.calcDisplay {
+  display: flex;
+  flex:  0 1 100%;
+  justify-content: flex-end;
+  border: 1px solid black;
+  height: 50px;
+  font-size: 2em;
+  align-items: center;
+  padding:0 10px;
+  background:#000;
+  color:#ff0;
+}
+
+.calcButtonsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  flex:  0 1 100%;
+}
+
+.calcButton {
+  display: flex;
+  flex:  0 1 25%;
+  font-size:2em;
+  justify-content: center;
+}
