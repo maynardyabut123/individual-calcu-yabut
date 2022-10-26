@@ -24,6 +24,7 @@ function App() {
   const [oper, setOper] = useState(0);
   const [res, setRes] = useState(0);
   const [disp, setDisp] = useState(0);
+  const [on,setOn] = useState(0);
 
   const numberClickHandler = (e) => {
     e.preventDefault();
@@ -73,6 +74,12 @@ function App() {
     } else if (oper === "/") {
       setRes(parseInt(num1) / parseInt(num2));
       setDisp(parseInt(num1) / parseInt(num2)); 
+    } else if(oper==="%"){
+      setRes(parseInt(num1) %  parseInt(num2));
+      setDisp(parseInt(num1) % parseInt(num2));
+    }else if(oper==="^"){
+      setRes(parseInt(num1) ** parseInt(num2));
+      setDisp(parseInt(num1) ** parseInt(num2));
     } else {
       setDisp("ERROR");
       setNum1(0);
@@ -80,6 +87,19 @@ function App() {
       setOper(0);
       setRes(0);
       setDisp(0);            
+    }
+  };
+
+  const delClickHandler =(e) => {
+    e.preventDefault();
+    const value = e.target.innerHTML;
+    if(res === 0){
+       setNum1(num1.slice(0, -1));
+       setDisp(disp.slice(0, -1));
+    }
+    else{
+      setNum2(num2.slice(0, -1));
+      setDisp(disp.slice(0, -1));
     }
   };
 
@@ -94,10 +114,19 @@ function App() {
     console.log(num1 +'|'+ num2 +'|'+ oper +'|'+ res +'|'+ disp);
   };
 
+    const onOffClickHandler = () => {
+      setOn = () => setOn(false);
+  };
+
+
   return ( 
     <div className="calcContainer">
       <CalcDisplay display={disp}/>
       <div className="calcButtonsContainer">
+        <CalcButton value="%" onClick={operClickHandler}/>
+        <CalcButton value="^" onClick={operClickHandler}/>
+        <CalcButton value="DEL" onClick={delClickHandler}/>
+        <CalcButton value="ON/OFF" onClick={onOffClickHandler}/>
         <CalcButton value="7" onClick={numberClickHandler}/>
         <CalcButton value="8" onClick={numberClickHandler}/>
         <CalcButton value="9" onClick={numberClickHandler}/>
