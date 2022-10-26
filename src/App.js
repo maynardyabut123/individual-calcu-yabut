@@ -24,7 +24,6 @@ function App() {
   const [oper, setOper] = useState(0);
   const [res, setRes] = useState(0);
   const [disp, setDisp] = useState(0);
-  const [on,setOn] = useState(0);
 
   const numberClickHandler = (e) => {
     e.preventDefault();
@@ -58,7 +57,18 @@ function App() {
 
     console.log(num1 +'|'+ num2 +'|'+ oper +'|'+ res +'|'+ disp);
   };
-
+  const delClickHandler =(e) => {
+    e.preventDefault();
+    const value = e.target.innerHTML;
+    if(res === 0){
+       setNum1(num1.slice(0, -1));
+       setDisp(disp.slice(0, -1));
+    }
+    else{
+      setNum2(num2.slice(0, -1));
+      setDisp(disp.slice(0, -1));
+    }
+  };
   const equalClickHandler = () => {
     console.log(num1 +'|'+ num2 +'|'+ oper +'|'+ res +'|'+ disp);
     
@@ -90,18 +100,6 @@ function App() {
     }
   };
 
-  const delClickHandler =(e) => {
-    e.preventDefault();
-    const value = e.target.innerHTML;
-    if(res === 0){
-       setNum1(num1.slice(0, -1));
-       setDisp(disp.slice(0, -1));
-    }
-    else{
-      setNum2(num2.slice(0, -1));
-      setDisp(disp.slice(0, -1));
-    }
-  };
 
   /*This is now working!*/
   const clearClickHandler = () => {
@@ -112,12 +110,6 @@ function App() {
     setDisp(0);
 
     console.log(num1 +'|'+ num2 +'|'+ oper +'|'+ res +'|'+ disp);
-  };
-
-    const onOffClickHandler = () => {
-      setOn = () => setOn(false);
-  };
-
 
   return ( 
     <div className="calcContainer">
